@@ -9,36 +9,36 @@
     $e_mail=$_POST['email'];
     $p_assword=$_POST['psw'];
 
-    // AGREGADO: Incluimos creaded_at y updated_at con NOW() para evitar bloqueos de campos obligatorios
-    $sql = "
+    $hashed_password = password_hash($p_assword, PASSWORD_DEFAULT);
+
+    //
+    $sql_validation = "
+        SELECT u.email FROM users u WHERE u.email = '$e_mail'
+    ";
+
+    $supa_res = pg_query($supa_conn, $sql_validation);
+
+    if(pg_num_rows ($supa_res) > 0){
+        echo "<script>alert('User email already exists :::')</script>";
+        header('refresh:0;url=signup.html');
+    }else{
+        $sql = "
         INSERT INTO users (
             firstname, lastname, mobile_phone, email, password
         )
         VALUES(
-            '$f_name', '$l_name', '$m_phone', '$e_mail', '$p_assword'
+            '$f_name', '$l_name', '$m_phone', '$e_mail', '$hashed_password'
         )
-    ";
+        ";
 
-    $local_res = pg_query($local_conn, $sql);
-    $supa_res = pg_query($supa_conn, $sql);
+        $local_res = pg_query($local_conn, $sql);
+        $supa_res = pg_query($supa_conn, $sql);
 
-    if($local_res){
-        echo "User has been created successfully into local database !!!<br>";
-    } else{
-        echo "User hasn't been created into local database !!! <br>";
+        if($supa_res){
+            echo "<script>alert('User has been created successfully into supabase database !!!')</script>";
+            header('refresh:0;url=signin.html');
+        } else{
+            echo "User hasn't been created into supabase database !!!<br>";
+        }
     }
-
-    if($supa_res){
-        echo "User has been created successfully into supabase database !!!<br>";
-    } else{
-        echo "User hasn't been created into supabase database !!!<br>";
-    }
-
-    /*
-    echo "Firstname is: ". $f_name;
-    echo "<br>Lastname is: ". $l_name;
-    echo "<br>Mobile Phone is: ". $m_phone;
-    echo "<br>E-mail is: ". $e_mail;
-    echo "<br>Password is: ". $p_assword;
-    */
 ?>
