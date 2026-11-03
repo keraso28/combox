@@ -3,23 +3,183 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Combox - Sign up </title>
+        <title>Combox - Sign Up</title>
         <link rel="icon" type="image/png" href="icons/icono.png">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                background-color: #E89684;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 24px 16px;
+            }
+
+            .card {
+                background-color: #ffffff;
+                padding: 36px 32px;
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                width: 100%;
+                max-width: 440px;
+            }
+
+            .header {
+                text-align: center;
+                margin-bottom: 24px;
+            }
+
+            .brand-icon {
+                width: 52px;
+                height: 52px;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                color: #2b2b2b;
+                font-size: 24px;
+                margin-bottom: 4px;
+            }
+
+            p.subtitle {
+                color: #666666;
+                font-size: 14px;
+            }
+
+            .form-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .form-group {
+                margin-bottom: 16px;
+                text-align: left;
+            }
+
+            label {
+                display: block;
+                font-size: 13px;
+                font-weight: 600;
+                color: #444444;
+                margin-bottom: 6px;
+            }
+
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"],
+            input[type="password"] {
+                width: 100%;
+                padding: 11px 13px;
+                border: 1px solid #d1d5db;
+                border-radius: 6px;
+                font-size: 14px;
+                color: #1f2937;
+                outline: none;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+
+            input:focus {
+                border-color: #E89684;
+                box-shadow: 0 0 0 3px rgba(232, 150, 132, 0.25);
+            }
+
+            .btn-submit {
+                width: 100%;
+                padding: 12px;
+                background-color: #E89684;
+                color: #ffffff;
+                border: none;
+                border-radius: 6px;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background-color 0.2s ease, transform 0.1s ease;
+                margin-top: 6px;
+            }
+
+            .btn-submit:hover {
+                background-color: #d67f6d;
+            }
+
+            .btn-submit:active {
+                transform: scale(0.98);
+            }
+
+            .footer-links {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 13px;
+                color: #666666;
+            }
+
+            .footer-links a {
+                color: #d67f6d;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            .footer-links a:hover {
+                text-decoration: underline;
+            }
+
+            @media (max-width: 480px) {
+                .form-grid {
+                    grid-template-columns: 1fr;
+                    gap: 0;
+                }
+            }
+        </style>
     </head>
-    <body style="background-color: #E89680;">
-        <form name="register-form" action="signup.php" method="post">
-        <h3>Register new Combox User</h3><br>
-        <label>First Name:</label><br>
-        <input type="text" name="fname" required><br>
-        <label>Last Name:</label><br>
-        <input type="text" name="lname" required><br>
-        <label>Mobile Number:</label><br>
-        <input type="text" name="mphone" required><br>
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br>
-        <label>Password:</label><br>
-        <input type="password" name="psw" required><br><br>
-        <button type="submit">Register</button>
-        </form>
+    <body>
+        <div class="card">
+            <div class="header">
+                <img src="icons/icono.png" alt="Combox Logo" class="brand-icon">
+                <h2>Create Account</h2>
+                <p class="subtitle">Join Combox by entering your details</p>
+            </div>
+
+            <form action="signup.php" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="fname" placeholder="John" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lname" placeholder="Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mphone">Mobile Phone</label>
+                    <input type="tel" id="mphone" name="mphone" placeholder="3001234567" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="psw">Password</label>
+                    <input type="password" id="psw" name="psw" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Sign Up</button>
+            </form>
+
+            <div class="footer-links">
+                Already have an account? <a href="signin.html">Sign in</a>
+            </div>
+        </div>
     </body>
 </html>

@@ -3,11 +3,102 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Combox - Home </title>
+        <title>Combox - Home</title>
         <link rel="icon" type="image/png" href="src/icons/icono.png">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                background-color: #E89684;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .container {
+                background-color: #ffffff;
+                padding: 40px 30px;
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                text-align: center;
+                max-width: 380px;
+                width: 90%;
+            }
+
+            .brand-icon {
+                width: 64px;
+                height: 64px;
+                margin-bottom: 12px;
+            }
+
+            h1 {
+                color: #2b2b2b;
+                font-size: 26px;
+                margin-bottom: 8px;
+            }
+
+            p {
+                color: #666666;
+                font-size: 14px;
+                margin-bottom: 28px;
+            }
+
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                display: block;
+                padding: 12px 20px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 15px;
+                border-radius: 6px;
+                transition: background-color 0.2s ease, transform 0.1s ease;
+            }
+
+            .btn:active {
+                transform: scale(0.98);
+            }
+
+            .btn-primary {
+                background-color: #E89684;
+                color: #ffffff;
+            }
+
+            .btn-primary:hover {
+                background-color: #d67f6d;
+            }
+
+            .btn-secondary {
+                background-color: #f3f4f6;
+                color: #333333;
+                border: 1px solid #e5e7eb;
+            }
+
+            .btn-secondary:hover {
+                background-color: #e5e7eb;
+            }
+        </style>
     </head>
-    <body bgcolor="#E89684">
-        <a href="src/signup.html" target="_blank">Sign up</a> |
-        <a href="src/signin.html">Sign in</a>
+    <body>
+        <div class="container">
+            <img src="src/icons/icono.png" alt="Combox Logo" class="brand-icon">
+            <h1>Welcome to Combox</h1>
+            <p>Access your account or create a new one to get started.</p>
+
+            <div class="btn-group">
+                <a href="src/signin.html" class="btn btn-primary">Sign in</a>
+                <a href="src/signup.html" class="btn btn-secondary">Sign up</a>
+            </div>
+        </div>
     </body>
 </html>
