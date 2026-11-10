@@ -29,19 +29,4 @@
         user=$supa_user 
         password=$supa_password
     ");
-
-
-    if (!$local_conn) {
-        echo "Error en conexión Local... <br>";
-    } else {
-        echo "¡Conexión Local exitosa! <br>";
-    }
-
-    if (!$supa_conn) {
-        echo "Error en conexión Supabase... <br>";
-    } else {
-        echo "¡Conexión Supabase exitosa! <br>";
-    }
-
-
 ?>
